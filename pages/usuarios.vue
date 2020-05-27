@@ -91,7 +91,7 @@
                 id="clave"
                 v-model="usuario.clave"
                 required
-                type="text"
+                type="password"
                 placeholder="ingrese la clave"
               ></b-form-input>
             </b-form-group>

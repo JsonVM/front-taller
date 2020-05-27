@@ -11,6 +11,9 @@
         <a href="usuarios" target="_blank" class="button--green">
           control de usuarios
         </a>
+        <a href="asignaciones-admin" target="_blank" class="button--green">
+          asignar mantenimiento
+        </a>
       </div>
     </div>
   </div>
