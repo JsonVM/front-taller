@@ -112,6 +112,7 @@ export default {
         .then((response) => {
           console.log("moto editada correctamente");
           alert("La moto se edito correctamente");
+          this.cargar();
           console.log(response);
         })
         .catch((error) => {
