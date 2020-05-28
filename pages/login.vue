@@ -1,11 +1,13 @@
 <template>
   <div class="container">
-    <div>
+    <div class= "c">
       <h1 class="title">
-        Autenticación
+        Iniciar sesión
+        
       </h1>
+      <div class="d">
         <b-form action="javascript:void(0)">
-          <b-form-group @submit.stop.prevent label="Documento" label-for="id">
+          <b-form-group @submit.stop.prevent label="Documento:" label-for="id">
             <b-form-input
               class="form-control"
               v-model="usuario.documento"
@@ -15,7 +17,7 @@
               :rules="reglas"/>
           </b-form-group>
 
-          <b-form-group @submit.stop.prevent label="Contraseña" label-for="password">
+          <b-form-group @submit.stop.prevent label="Contraseña:" label-for="password">
             <b-form-input
               class="form-control"
               type="password"
@@ -28,10 +30,9 @@
         <b-button @click="login()" type="submit" block variant="success">Ingresar</b-button>
 
           <span class="red--text py-2">{{ mensaje }}</span>
-          <div class="text">
-            <br />
-          </div>
+          
         </b-form>      
+      </div>
     </div>
   </div>
 </template>
@@ -40,6 +41,8 @@
 
 <style>
 .container {
+  background-image: url("../imagenes/moto1.jpg");
+  background-size: 100%;
   margin: 0 auto;
   min-height: 100vh;
   display: flex;
@@ -49,24 +52,35 @@
 }
 
 .title {
-  font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont,
+  font-family: "Arial", "Source Sans Pro", -apple-system, BlinkMacSystemFont,
     "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   display: block;
   font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
+  font-size: 50px;
+  color: black;
   letter-spacing: 1px;
 }
 
 .subtitle {
   font-weight: 300;
   font-size: 42px;
-  color: #526488;
+  color: black;
   word-spacing: 5px;
   padding-bottom: 15px;
 }
 
 .links {
   padding-top: 15px;
+}
+
+.c {
+  padding: 2%;
+  background-color: #CC2936;
+  opacity: 90%;
+  font-weight: 500;
+}
+
+.d {
+  background-color: #CC2936;
 }
 </style>

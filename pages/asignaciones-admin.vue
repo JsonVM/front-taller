@@ -42,12 +42,30 @@
                 placeholder="fecha actual"
               ></b-form-input>
             </b-form-group>
+            
+            <b-form-group id="input-group-4" label="trabajos realizados:" label-for="trabajos_realizados">
+              <b-form-input
+                id="trabajos_realizados"
+                v-model="mantenimiento.trabajos_realizados"
+                type="text"
+                placeholder="trabajos realizados a la moto"
+                
+              ></b-form-input>
+            </b-form-group>
+
+            <b-form-group id="input-group-5" label="Horas trabajadas:" label-for="horas_invertidas">
+              <b-form-input
+                id="horas_invertidas"
+                v-model="mantenimiento.horas_invertidas"
+                placeholder="ingrese las horas invertidas totales en los trabajos"
+              ></b-form-input>
+            </b-form-group>
 
 
             <b-button type="submit" variant="success" v-if="!enEdicion"
               >Registrar mantenimiento</b-button
             >
-            <b-button @click="actualizarmantenimientoBD()" variant="success" v-else
+            <b-button @click="actualizarMantenimientoBD()" variant="success" v-else
               >Actualizar datos mantenimiento</b-button
             >
           </b-form>

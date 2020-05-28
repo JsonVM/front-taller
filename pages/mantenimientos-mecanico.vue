@@ -16,13 +16,14 @@
       >
 
        <b-card-body>
-          <b-form action="javascript:void(0)" @submit="crearMantenimiento()">
+          <b-form action="javascript:void(0)" @submit="actualizarMantenimientoBD()">
             <b-form-group id="input-group-2" label="documento del mecánico:" label-for="id_mecanico">
               <b-form-input
                 id="id_mecanico"
                 v-model="mantenimiento.id_mecanico"
                 required
-                placeholder="Ingrese el id del mecánico que realizará mantenimiento"
+                disabled
+                placeholder="documento del mecánico que realizará mantenimiento"
               ></b-form-input>
             </b-form-group>
 
@@ -31,7 +32,8 @@
                 id="placa"
                 v-model="mantenimiento.placa"
                 required
-                placeholder="Ingrese la placa del mantenimiento"
+                disabled
+                placeholder="placa de la moto del mantenimiento"
               ></b-form-input>
             </b-form-group>
 
@@ -40,6 +42,7 @@
                 id="fecha"
                 v-model="mantenimiento.fecha"
                 required
+                disabled
                 placeholder="fecha actual"
               ></b-form-input>
             </b-form-group>
@@ -50,7 +53,8 @@
                 v-model="mantenimiento.trabajos_realizados"
                 required
                 type="text"
-                placeholder="Ingrese los trabajos realizados a la moto"
+                placeholder="trabajos realizados a la moto"
+                
               ></b-form-input>
             </b-form-group>
 
@@ -65,11 +69,10 @@
 
           </b-form>
 
-
-            <b-button type="submit" variant="success" v-if="!enEdicion"
-              >actualizar mantenimiento</b-button
+            <b-button @click="actualizarMantenimientoBD()" variant="success" v-if="enEdicion"
+              >Actualizar datos mantenimiento</b-button
             >
-    
+
              <b-table responsive hover :items="lista_mantenimientos" :fields="fields" head-variant="dark">
               <template v-slot:cell(acciones)="row">
                   <div>

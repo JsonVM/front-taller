@@ -8,7 +8,7 @@
         <a href="registro-motos" target="_blank" class="button--green">
           registrar motos
         </a>
-        <a href="mantenimientos-mecánico" target="_blank" class="button--green">
+        <a href="mantenimientos-mecanico" target="_blank" class="button--green">
           ver mantenimientos
         </a>
       </div>

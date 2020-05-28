@@ -6,6 +6,7 @@ export default {
   data() {
     return {
       enEdicion: false,
+      sePuedeEditar: false,
 
       //en este json se almacena la información agregada de los mantenimientos
      mantenimiento: {
@@ -64,8 +65,9 @@ export default {
 
     //cargar todos los registros de la BD y listarlos
     cargar() {
-      let url = "http://localhost:3001/asignaciones/";
-      axios.get(url).then(respuesta => {
+        let id = localStorage.getItem("documento");
+      let url = "http://localhost:3001/asignaciones/"+id;
+      axios.get(url,id).then(respuesta => {
         let data = respuesta.data
         if (data.ok) {
           this.lista_mantenimientos = data.info
@@ -83,26 +85,40 @@ export default {
 
     //cargar unamantenimiento para editarla 
     cargarMantenimientoEditar({ item }) {
-     let editar = this.lista_mantenimientos.find(mantenimiento =>mantenimiento.documento == item.documento);
+        let plac = item.placa;
+        let id_mecanic= item.id_mecanico;
+        let fech= item.fecha;
+        let trabajos_realizado= item.trabajos_realizados;
+        let horas_invertida= item.horas_invertidas;
+
+        let man ={
+            placa:plac,
+            id_mecanico: id_mecanic,
+            fecha: fech,
+            trabajos_realizados: trabajos_realizado,
+            horas_invertidas: horas_invertida
+        }
+
+        this.mantenimiento =man;
+
       this.enEdicion = true;
-      this.mantenimiento = Object.assign({}, editar);
     },
 
     //agregar los nuevos valores a lamantenimiento editada
     actualizarMantenimientoBD() {
-      let id_Editar = this.mantenimiento.documento;
-      console.log("documento demantenimiento a editar: "+this.mantenimiento.documento);
-      let direccion = "http://localhost:3001/mantenimientos/" + id_Editar;
+      let direccion = "http://localhost:3001/asignaciones/" + this.mantenimiento.placa + "/"
+       + this.mantenimiento.id_mecanico + "/" + this.mantenimiento.fecha;
       axios
         .put(direccion, this.mantenimiento)
         .then((response) => {
           console.log("mantenimiento editada correctamente");
-          alert("Lamantenimiento se edito correctamente");
+          alert("El mantenimiento se actualizó correctamente");
           console.log(response);
+          this.cargar();
         })
         .catch((error) => {
           console.log(error);
-          alert("Lo sentimos, el mantenimiento no se pudo editar correctamente");
+          alert("Lo sentimos, el mantenimiento no se pudo actualizar");
         });
         this.enEdicion = false;
       this.mantenimiento = {
@@ -113,44 +129,6 @@ export default {
         horas_invertidas:"",
         acciones:true
       };
-    },
-
-    //Actualiza los datos de unmantenimiento
-    actualizarMantenimiento() {
-      let posicion = this.lista_mantenimientos.findIndex(
-       mantenimiento =>mantenimiento.documento == this.mantenimiento.documento
-      );
-      this.enEdicion = false;
-      this.lista_mantenimientos.splice(posicion, 1, this.mantenimiento);
-      this.mantenimiento = {
-            tipo_documento: "",
-            documento: "",
-            nombre: "",
-            apellidos: "",
-            celular: "",
-            correo: "",
-            rol: "",
-            clave: "",
-            acciones:true
-      };
-      localStorage.setItem('info-mantenimiento', JSON.stringify(this.lista_mantenimientos));
-    },
-
-    //eliminarmantenimiento de la BD
-    eliminarMantenimiento({item}) {
-      let i = item.documento;
-      let direccion = "http://localhost:3001/mantenimientos/" + i;
-      axios
-        .delete(direccion, i)
-        .then((response) => {
-          console.log("mantenimiento eliminado correctamente");
-          alert("mantenimiento eliminado correctamente");
-          this.cargar();
-          console.log(response);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
     },
     //Para cargar los datos del localstorage en nuestro arreglo de mantenimientos
     local() {
