@@ -27,7 +27,7 @@
 			  :rules="reglas"/>
         </b-form-group>
 
-        <b-button @click="login()" type="submit" block variant="success">Ingresar</b-button>
+        <b-button @click="login()" type="submit" block variant="danger">Ingresar</b-button>
 
           <span class="red--text py-2">{{ mensaje }}</span>
           
@@ -38,49 +38,4 @@
 </template>
 
 <script src="../assets/login.js" />
-
-<style>
-.container {
-  background-image: url("../imagenes/moto1.jpg");
-  background-size: 100%;
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.title {
-  font-family: "Arial", "Source Sans Pro", -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 50px;
-  color: black;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: black;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
-}
-
-.c {
-  padding: 2%;
-  background-color: #CC2936;
-  opacity: 90%;
-  font-weight: 500;
-}
-
-.d {
-  background-color: #CC2936;
-}
-</style>
+<style src="../css/general.css" />

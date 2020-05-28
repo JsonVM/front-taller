@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div>
-      <h1 class="title">
+      <h1 class="titulo-blanco">
         Registro de motos
       </h1>
 
@@ -11,7 +11,7 @@
         img-top
         tag="article"
         style="max-width: 50rem;"
-        class="mb-2"
+        class="c2"
         v-show="true"
       >
         <b-card-body>
@@ -155,19 +155,19 @@
               ></b-form-input>
             </b-form-group>
 
-            <b-button type="submit" variant="success" v-if="!enEdicion"
+            <b-button type="submit" variant="danger" v-if="!enEdicion"
               >Registrar moto</b-button
             >
-            <b-button @click="actualizarMotoBD()" variant="success" v-else
+            <b-button @click="actualizarMotoBD()" variant="danger" v-else
               >Actualizar datos moto</b-button
             >
           </b-form>
 
-          <b-table responsive hover :items="lista_motos" :fields="fields" head-variant="dark">
+          <b-table class="tabla" responsive hover :items="lista_motos" :fields="fields" head-variant="dark">
               <template v-slot:cell(acciones)="row">
                   <div>
-                      <b-button size="sm" @click="cargarMotoEditar(row)" class="mr-2">Editar</b-button>
-                      <b-button size="sm" @click="eliminarMoto(row)" class="mr-2">Eliminar</b-button>
+                      <b-button size="sm" @click="cargarMotoEditar(row)" variant="danger">Editar</b-button>
+                      <b-button size="sm" @click="eliminarMoto(row)" variant="danger">Eliminar</b-button>
                   </div>
               </template>
               </b-table>
@@ -179,35 +179,4 @@
 
 <script src="@/assets/registro-motos.js"/>
 
-<style>
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  
-}
-
-.title {
-  font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
-}
-</style>
+<style src="../css/general.css" />

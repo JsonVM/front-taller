@@ -11,7 +11,7 @@
         img-top
         tag="article"
         style="max-width: 50rem;"
-        class="mb-2"
+        class="c2"
         v-show="true"
       >
         <b-card-body>
@@ -97,10 +97,10 @@
             </b-form-group>
             
 
-            <b-button type="submit" variant="success" v-if="!enEdicion"
+            <b-button type="submit" variant="danger" v-if="!enEdicion"
               >Registrar usuario</b-button
             >
-            <b-button @click="actualizarUsuarioBD()" variant="success" v-else
+            <b-button @click="actualizarUsuarioBD()" variant="danger" v-else
               >Actualizar datos usuario</b-button
             >
           </b-form>
@@ -121,33 +121,4 @@
 
 <script src="@/assets/usuarios.js"/>
 
-<style>
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  
-}
-
-.title {
-  font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
-}
-</style>
+<style src="../css/general.css" />

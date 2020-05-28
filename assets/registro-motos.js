@@ -23,7 +23,7 @@ export default {
             vencimiento_tecnomecanica: "",
             acciones: true
       },
-      fields: ["placa", "estado", "clase", "marca", "model", "color", "id_propietario", "acciones"],
+      fields: ["placa", "estado", "clase", "marca", "modelo", "color", "id_propietario", "acciones"],
 
       //En este arreglo se meten todas las motos
       lista_motos: [
